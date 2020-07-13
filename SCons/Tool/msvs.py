@@ -1621,6 +1621,8 @@ class _GenerateV7DSW(_DSWGenerator):
         for dspinfo in self.dspfiles_info:
             name = dspinfo['NAME']
             base, suffix = SCons.Util.splitext(name)
+            if suffix == '.filters':
+                continue
             if suffix == '.vcproj':
                 name = base
             self.file.write('Project("%s") = "%s", "%s", "%s"\n'
